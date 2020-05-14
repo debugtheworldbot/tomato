@@ -8,7 +8,10 @@
   <g-button type="change" size="mini" text="创建任务">创建任务</g-button>
 	<view class="tomato-wrapper">
 		<view class="tomato">
-
+		<g-clock text="点击开始闹钟">
+		</g-clock>
 		</view>
 	</view>
+	<g-confirm placeholder="???" bindconfirm="confirm" bindcancel="cancel" visible="{{visible}}">
+	</g-confirm>
 </view>
