@@ -12,8 +12,11 @@
 
 
 <view class="again" wx:else>
-<g-button size="mini" type="change" text="再来一组"></g-button>
+<g-button size="mini" type="change" text="再来一组" bindtap="againTimer"></g-button>
 </view>
 <g-confirm visible="{{confirmVisible}}" bindconfirm="abandon" bindcancel="cancel" placeholder="请输入放弃理由">
+</g-confirm>
+
+<g-confirm visible="{{finishVisible}}" bindconfirm="confirmFinish" bindcancel="confirmCancel" placeholder="请输入做了什么">
 </g-confirm>
 </view>

@@ -8,10 +8,10 @@
 	</scroll-view>
   <g-button type="change" size="mini" text="创建任务" bindtap="showConfirm">创建任务</g-button>
 	<view class="tomato-wrapper">
-		<view class="tomato">
-		<g-clock text="点击开始闹钟">
+		<navigator class="tomato" url="/pages/tomato/tomato">
+		<g-clock text="点击开始闹钟" bindtap="goTomato">
 		</g-clock>
-		</view>
+		</navigator> 
 	</view>
 	<g-confirm placeholder="???" bindconfirm="confirm" bindcancel="cancel" visible="{{visible}}">
 	</g-confirm>

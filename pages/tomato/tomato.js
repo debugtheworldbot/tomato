@@ -6,11 +6,12 @@ Page({
    */
   timer:null,
   data: {
-    time:2,
+    time:1500,
     clock:"",
     timerStauts:'stop',
     confirmVisible:false,
-    anotherOne:false
+    anotherOne:false,
+    finishVisible:false
   },
   onShow: function () {
     this.changeTime()
@@ -19,13 +20,14 @@ Page({
   start(){
     this.setData({timerStauts:'start'})
     this.timer=setInterval(()=>{
+      this.data.time --
+      this.changeTime()
       if(this.data.time === 0){
        this.pause()
        this.setData({anotherOne:true})
+       this.setData({finishVisible:true})
         return
       }
-      this.data.time --
-      this.changeTime()
     },1000)
   },
   pause(){
@@ -55,14 +57,31 @@ Page({
   },
   abandon(event){
       let content=event.detail
-      wx.navigateTo({
-        url: '../home/home',
+      wx.navigateBack({
+        to:-1
       })
   },
   cancel(){
    this.setData({confirmVisible:false})
    this.start()
   },
+  againTimer(){
+    this.setData({anotherOne:false})
+
+    this.data.time = 1500
+    this.changeTime()
+    this.start()
+  },
+  confirmFinish(event){
+    let content=event.detail
+
+  },
+  confirmCancel(){
+    this.setData({finishVisible:false})
+  },
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
