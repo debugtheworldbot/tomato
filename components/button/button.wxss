@@ -20,6 +20,11 @@ button::after{ border: none; }
   border: 2rpx solid #F6705A;
   color: #F6705A;
 }
+.tomato-button.clear {
+  background: transparent;
+  border:none;
+  color: #F6705A;
+}
 .tomato-button.mini {
   width: 360rpx;
 }

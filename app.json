@@ -1,9 +1,8 @@
 {
   "pages": [
+    "pages/me/me",
     "pages/home/home",
     "pages/tomato/tomato"
-    
-
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,7 +29,7 @@
         "selectedIconPath": "images/total-active.png"
       },
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/me/me",
         "text": "我的",
         "iconPath": "images/me.png",
         "selectedIconPath": "images/me-active.png"

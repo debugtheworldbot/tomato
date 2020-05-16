@@ -2,12 +2,14 @@
 <view class="clock"><g-clock text="{{clock}}" fontSize="50"></g-clock></view> 
 
 <view class="stop" wx-if="{{!anotherOne}}">
-<g-button size="mini" type="change" text="暂停" bindtap="pause" wx:if="{{timerStauts==='start'}}"></g-button>
+<g-button size="mini" type="default" text="暂停" bindtap="pause" wx:if="{{timerStauts==='start'}}"></g-button>
+
 <g-button size="mini" type="change" text="继续"  bindtap="start" wx:else></g-button>
+
 </view>
 
 <view wx-if="{{!anotherOne}}">
-<g-button size="mini"  text="放弃" bindtap="showConfirm"></g-button>
+<g-button size="mini"  extra="clear" text="放弃" bindtap="showConfirm"></g-button>
 </view>
 
 
