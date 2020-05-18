@@ -3,13 +3,14 @@ Page({
 
   timer:null,
   data: {
-    time:1500,
+    time:3,
     clock:"",
     timerStauts:'stop',
     confirmVisible:false,
     anotherOne:false,
     finishVisible:false,
-    tomato:{}
+    tomato:{},
+    finished:""
   },
   onShow: function () {
     this.changeTime()
@@ -17,8 +18,6 @@ Page({
     http.post('/tomatoes').then(response => {
       this.setData({ tomato: response.data.resource})
     })
-   
-    
   },
   start(){
     this.setData({timerStauts:'start'})
@@ -74,14 +73,17 @@ Page({
   },
   againTimer(){
     this.setData({anotherOne:false})
-
     this.data.time = 1500
     this.changeTime()
     this.start()
   },
   confirmFinish(event){
     let content=event.detail
-
+    http.post('/tomatoes').then(response => {
+      this.setData({ finished: content})
+      console.log(this.data.finished);  
+    })
+    this.setData({finishVisible:false})
   },
   confirmCancel(){
     this.setData({finishVisible:false})

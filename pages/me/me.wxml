@@ -1,3 +1,4 @@
+      <wxs src="../../libs/formattor.wxs" module="formattor"></wxs>
 <view class="cantainer">
   <view class="header">
     <view class="avatar">
@@ -8,7 +9,6 @@
       <navigator url="/pages/binding/binding" wx:if="{{!me.account}}">绑定pc账号</navigator>
     </view>
     <button open-type="contact" class="qr">问题反馈</button>
-    <!-- <view class="qr">问题反馈</view> -->
   </view>
 
   <view class="tabs">
@@ -20,12 +20,23 @@
           data-name="task" bindtap="changeTab">我完成的任务</view>
   </view>
 
-  <scroll-view scroll-y="true" class="lists" >
-   <view class="item" wx:for="{{lists}}" >
-   <view class="time">{{index}}</view>
-   <view class="content" wx:for="{{lists[index]}}"  >
-   <text>{{item.time}}</text>
-   <view class="detail">{{item.text}}</view></view>
-   </view>
+  <scroll-view scroll-y="true" class="lists" wx:if="{{tab === 'tomato'}}">
+    <view class="item" wx:for="{{tomatoes}}" wx:for-index="key" wx:key="index">
+      <view class="time">{{formattor.monthFormat(key)}}</view>
+      <view class="content" wx:for="{{tomatoes[key]}}" wx:for-index="index" wx:key="index">
+        <text>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text>
+        <view class="detail">{{item.description}}</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <scroll-view scroll-y="true" class="lists" wx:if="{{tab === 'task'}}">
+    <view class="item" wx:for="{{todos}}" wx:for-index="key" wx:key="index">
+      <view class="time">{{formattor.monthFormat(key)}}</view>
+      <view class="content" wx:for="{{todos[key]}}" wx:for-index="index" wx:key="index">
+        <text>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text>
+        <view class="detail">{{item.description}}</view>
+      </view>
+    </view>
   </scroll-view>
 </view>
