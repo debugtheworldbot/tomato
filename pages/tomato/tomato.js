@@ -1,9 +1,6 @@
-// pages/tomato/tomato.js
+const {http} = require('../../libs/_http.js');
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   timer:null,
   data: {
     time:1500,
@@ -11,11 +8,17 @@ Page({
     timerStauts:'stop',
     confirmVisible:false,
     anotherOne:false,
-    finishVisible:false
+    finishVisible:false,
+    tomato:{}
   },
   onShow: function () {
     this.changeTime()
     this.start()
+    http.post('/tomatoes').then(response => {
+      this.setData({ tomato: response.data.resource})
+    })
+   
+    
   },
   start(){
     this.setData({timerStauts:'start'})
@@ -57,6 +60,10 @@ Page({
   },
   abandon(event){
       let content=event.detail
+      http.put(`/tomatoes/${this.data.tomato.id}`,{
+        description:content,
+        aborted:true
+      })
       wx.navigateBack({
         to:-1
       })
@@ -78,6 +85,20 @@ Page({
   },
   confirmCancel(){
     this.setData({finishVisible:false})
+  },
+  onHide(){
+    this.clearTimer()
+      http.put(`/tomatoes/${this.data.tomato.id}`,{
+        description:"退出放弃",
+        aborted:true
+      })
+  },
+  onUnload(){
+    this.clearTimer()
+    http.put(`/tomatoes/${this.data.tomato.id}`,{
+      description:"退出放弃",
+      aborted:true
+    })
   },
 
 
