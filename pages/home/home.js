@@ -50,6 +50,9 @@ Page({
     })
   },
   destroyTodo(event){
+    wx.vibrateShort({
+      complete: (res) => {},
+    })
     let index = event.currentTarget.dataset.index
     let id = event.currentTarget.dataset.id
     http.put(`/todos/${id}`,{
@@ -71,7 +74,7 @@ Page({
     this.setData({ visibleUpdateConfirm: false })
   },
   vibrate(){
-    wx.vibrateShort({
+    wx.vibrateLong({
       complete: (res) => {},
     })
   }

@@ -18,14 +18,13 @@ Page({
     http.get('/tomatoes',{is_group: "yes"})
     .then(response=>{
       this.setData({tomatos:response.data.resources})
-      console.log(this.data.tomatos);
-      
     })
   },
   fetchTodos(){
     http.get('/todos',{is_group:"yes"})
     .then(response=>{
       this.setData({todos:response.data.resources})
+      console.log(response.data.resources);
     })
   }
 })
