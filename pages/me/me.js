@@ -1,7 +1,4 @@
 const {http} = require('../../libs/_http.js');
-
-
-
 Page({
   data: {
     tab:"tomato",
@@ -14,11 +11,15 @@ Page({
   onShow(){ 
     this.fetchTomatoes()
     this.fetchTodos()
+   this.setData({me:wx.setStorageSync('me')})
+
   },
   fetchTomatoes(){
     http.get('/tomatoes',{is_group: "yes"})
     .then(response=>{
       this.setData({tomatos:response.data.resources})
+      console.log(this.data.tomatos);
+      
     })
   },
   fetchTodos(){

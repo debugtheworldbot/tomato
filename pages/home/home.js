@@ -69,5 +69,10 @@ Page({
   },
   hideUpdateConfirm(){
     this.setData({ visibleUpdateConfirm: false })
+  },
+  vibrate(){
+    wx.vibrateShort({
+      complete: (res) => {},
+    })
   }
 })

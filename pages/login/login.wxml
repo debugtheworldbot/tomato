@@ -6,5 +6,5 @@
 		<open-data type='userNickName' class="name"></open-data>
 	</view>
   <button class="loginBtn" open-type="getUserInfo" bindgetuserinfo="login" withCredentials="true">登录</button>
-  <navigator url="/pages/bind/bind" class="bind">绑定PC ></navigator>
+
 </view>

@@ -3,7 +3,7 @@ Page({
 
   timer:null,
   data: {
-    time:3,
+    time:1500,
     clock:"",
     timerStauts:'stop',
     confirmVisible:false,
@@ -33,6 +33,9 @@ Page({
     },1000)
   },
   pause(){
+    wx.vibrateShort({
+      complete: (res) => {},
+    })
     clearInterval(this.timer)
     this.timer=null
     this.setData({timerStauts:"stop"})

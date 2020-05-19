@@ -18,7 +18,7 @@
   <t-button type="change" class="createButton" text="创建任务" bindtap='showCreateConfirm'>创建任务</t-button>
   <view class="tomato-wrapper">
     <navigator class="tomato" url="/pages/tomato/tomato">
-     <t-clock text="点击开始闹钟"></t-clock>
+     <t-clock text="点击开始闹钟" bindtap="vibrate"></t-clock>
     </navigator>
   </view>
   <t-confirm placeholder="填写要完成的目标" bindconfirm="confirmCreate" bindcancel="hideCreateConfirm" visible="{{visibleCreateConfirm}}"></t-confirm>
