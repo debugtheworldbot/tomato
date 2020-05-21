@@ -3,9 +3,25 @@
   height: 100vh;
 }
 .clock{
-  padding-top: 282rpx;
+  padding-top: 39rpx;
   padding-bottom: 139rpx;
 }
 .stop{
   margin-bottom: 48rpx;
 }
+.progressBar{
+  width: 90%;
+  height: 5rpx;
+  position: relative;
+}
+.progress{
+  height: 100%;
+  background-color: #fabcb5;
+  transition: all 0.3s;
+  border: 2px solid #fabcb5;
+  border-radius: 20rpx;
+  position: absolute;
+  left: 0rpx;
+}
+
+

@@ -1,6 +1,6 @@
 const {http} = require('../../libs/_http.js');
-Page({
 
+Page({
   timer:null,
   data: {
     time:1500,
@@ -10,7 +10,11 @@ Page({
     anotherOne:false,
     finishVisible:false,
     tomato:{},
-    finished:""
+    finished:"",
+    content:"",
+    leftDeg: 45,
+    rightDeg: 45,
+    timeUse:0
   },
   onShow: function () {
     this.changeTime()
@@ -28,8 +32,13 @@ Page({
        this.pause()
        this.setData({anotherOne:true})
        this.setData({finishVisible:true})
+       this.setData({timeUse:100})
         return
       }
+
+      let time=this.data.time
+      this.setData({timeUse:100-time*100/1500})
+
     },1000)
   },
   pause(){
@@ -44,7 +53,6 @@ Page({
     let time = this.data.time
     let min=Math.floor( time/60)
     let sec=Math.floor(time%60)
-
     if(sec===0){
       sec="00"
     }
@@ -55,10 +63,24 @@ Page({
       min="0"+min
     }
     this.setData({clock:`${min}:${sec}`}) 
+
+
   },
   showConfirm(){
-    this.setData({confirmVisible:true})
     this.pause()
+    wx.showModal({
+      title: '提示',
+      content: '确定要放弃吗？',
+      success:  (sm) =>{
+        if (sm.confirm) {
+          wx.navigateBack({
+            to:-1
+          })
+          } else if (sm.cancel) {
+            this.start()
+          }
+        }
+      })
   },
   abandon(event){
       let content=event.detail

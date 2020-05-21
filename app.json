@@ -1,9 +1,8 @@
 {
   "pages": [
+
     "pages/home/home",
-    "pages/me/me", 
-    "pages/login/login",  
-    "pages/tomato/tomato"
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",
