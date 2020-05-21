@@ -63,9 +63,12 @@
      border: 4rpx solid #FE996F;
      margin-right: 30rpx;
      position: relative;
+     transition:all 0.3s;
+
     }
   .todoList .item select.active::before {
     content: "";
+    transition:all 0.3s;
     position: absolute;
     left: 50%;
     top: 50%;
